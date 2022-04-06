@@ -27,8 +27,10 @@ const styles = StyleSheet.create({
         alignSelf:'center'
       },
       BottomLeft:{
+
         width:'43%',
         height:30,
+        marginTop:90
       },
       LeftText:{
         marginTop:3,
@@ -51,6 +53,8 @@ const styles = StyleSheet.create({
       BottomRight:{
         width:'43%',
         height:30,
+        marginTop:85,
+        marginLeft:35
       },
 })
 export default styles;

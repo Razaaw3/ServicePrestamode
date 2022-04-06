@@ -120,5 +120,19 @@ const styles = StyleSheet.create({
         borderTopLeftRadius:50,
         borderTopRightRadius:50,
     },
+    InputStyleMains:{
+        
+        marginVertical:25,
+        width:'90%',
+        borderRadius:10,
+        alignSelf:'center',
+        backgroundColor:CommonStyle.AppThemeLight
+    },
+    InputStyles:{
+        width:'100%',
+        alignSelf:'center',
+        borderRadius:10,
+        backgroundColor:CommonStyle.AppThemeLight
+    },
 })
 export default styles;

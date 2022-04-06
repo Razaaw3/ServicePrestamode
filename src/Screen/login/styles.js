@@ -67,28 +67,24 @@ const styles = StyleSheet.create({
         marginVertical:10
 
       },
-      inputField:{
-        width:'90%',
-        height: 43,
-        backgroundColor:CommonStyle.AppThemeLight,
+      InputStyles:{
+        width:'100%',
+        // height:'100%',
         alignSelf:'center',
-        borderRadius:7,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-        
-        elevation: 4,
-      marginVertical:10,
-      flexDirection:'row',
-      alignItems:'center'
-
+        borderRadius:10,
+        backgroundColor:CommonStyle.AppThemeLight
     },
-      inputContainer:{
-          marginVertical:20
-      }
+    InputStyleMains:{
+        
+        marginVertical:10,
+        // height:50,
+        width:'90%',
+        borderRadius:10,
+        alignSelf:'center',
+        backgroundColor:CommonStyle.AppThemeLight
+    },
+    inputContainer:{
+        marginVertical:25
+    }
 })
 export default styles;

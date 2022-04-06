@@ -14,14 +14,17 @@ import {
     useBlurOnFulfill,
     useClearByFocusCell,
   } from 'react-native-confirmation-code-field';
+  import * as CommonStyle from "../../helper/CommonStyle";
 import Button from '../../Components/Button/index';
 import Header from '../../Components/AuthHeader/index';
 import Icon from 'react-native-vector-icons/AntDesign';
 import BGPIC from '../../../Image/logo.png';
+var validator = require('validator');
 const CELL_COUNT = 4;
 const VarificationCode = (Routprops) => {
     const [Content, setContent] = useState('Lorem ipsum dolor sit amet,consetetur sadipscing elitr, sed diam nonumy eirmod');
     const [value, setValue] = useState('');
+    const [error, setError] = useState('')
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -29,7 +32,13 @@ const VarificationCode = (Routprops) => {
   });
   const [time,settime] = useState('');
     const CHECK = () => {
-        Routprops.navigation.navigate('DrawerBarber')
+        if(validator.isEmpty(value)===true){
+            setError('Please Enter Verification code')
+        }
+        else{
+            Routprops.navigation.navigate('DrawerBarber')
+            setError('')
+        }
     }
     // return <Text>Example {time}</Text>
     return ( 
@@ -49,7 +58,7 @@ const VarificationCode = (Routprops) => {
                             {...props}
                             // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
                             value={value}
-                            onChangeText={setValue}
+                            onChangeText={code=>setValue(code)}
                             cellCount={CELL_COUNT}
                             rootStyle={styles.codeFieldRoot}
                             keyboardType="number-pad"
@@ -66,6 +75,7 @@ const VarificationCode = (Routprops) => {
                     </View>
                     <Icon name="close" size={20} color="lightgray" style={{marginLeft:32,marginTop:15}}/>
                     </View>
+                    <Text style={{marginBottom:9,alignSelf:'center',color:'red',fontFamily:CommonStyle.Regular,fontSize:12}}>{error}</Text>
                     <Button
                         ButtonText={'Valider'} 
                         propsFun={CHECK}
