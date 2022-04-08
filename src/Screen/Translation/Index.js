@@ -22,6 +22,7 @@ import Header from '../../Components/AuthHeader/index';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconDown from 'react-native-vector-icons/Entypo';
 import {useTranslation} from 'react-i18next';
+import '../../config/i18n/index'
 import * as i18n from 'i18next'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

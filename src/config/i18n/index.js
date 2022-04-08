@@ -15,8 +15,8 @@ import fr from './fr.json';
 //   }
 // });
 i18n.use(initReactI18next).init({
-  lng: 'en',
-  fallbackLng: 'en',
+  lng: getLang,
+  fallbackLng: getLang,
   resources: {
     en: en,
     fr: fr,
