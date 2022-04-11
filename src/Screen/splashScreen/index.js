@@ -7,16 +7,23 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Logo from '../../../Image/logo.png';
+import '../../config/i18n/index'
+import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const SplashScreen = (props) => {
+    const {t,i18n} = useTranslation(); 
     useEffect(() => {
         async function fetchValue(){
                 try {
                 const lan = await AsyncStorage.getItem('lan')
                 console.log("Your id in local storage is : ",lan)
                 if(lan===null){
-                    await AsyncStorage.setItem('lan','fr')
-                    // console.log('asddd')
+                    i18n
+                    .changeLanguage('fr')
+                }
+                else{
+                    i18n
+                    .changeLanguage(lan)
                 }
             } catch (error) {
                 console.log("Error is ",error)
@@ -26,7 +33,7 @@ const SplashScreen = (props) => {
             }, 2000);
         }
         fetchValue();
-    });
+    },[]);
     
     return ( 
         <SafeAreaView style={styles.MainContainer}>
