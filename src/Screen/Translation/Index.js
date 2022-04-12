@@ -18,12 +18,8 @@ import {
   } from 'react-native-confirmation-code-field';
   import Circle from 'react-native-vector-icons/dist/FontAwesome';
 import Button from '../../Components/Button/index';
-import Header from '../../Components/AuthHeader/index';
-import Icon from 'react-native-vector-icons/AntDesign';
-import IconDown from 'react-native-vector-icons/Entypo';
 import {useTranslation} from 'react-i18next';
 import '../../config/i18n/index'
-import * as i18n from 'i18next'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -38,13 +34,6 @@ const Index = (Routprops) => {
     setValue,
   });
   const [currentLanguage,setCurrentLanguage] =useState('fr');
-  const [time,settime] = useState('');
-//   const [ChangeLanguage , setChangeLanguage] = useState(false);
-
-    // const CHECK = () => {
-    //     Routprops.navigation.navigate('VerificationCode')
-    // }
-    // return <Text>Example {time}</Text>
     const changeLanguage =async(value) => {
         setCurrentLanguage(value)
         try {
@@ -54,14 +43,12 @@ const Index = (Routprops) => {
             {
                 console.log("Error is   :",e)
             }
-        // console.log(language)
         i18n
           .changeLanguage(value)
           .then(() =>   setCurrentLanguage(value))
           .catch(err => console.log(err));
       }
       const ChangeLanguageFun = () => {
-        // setChangeLanguage(!ChangeLanguage)
         Routprops.navigation.navigate('Screen1')
     }
     return ( 
@@ -90,7 +77,7 @@ const Index = (Routprops) => {
                 </View>
             </ScrollView>
             <Button
-                        ButtonText={'Valider'} 
+                        ButtonText={t('Valider')} 
                         propsFun={ChangeLanguageFun}
                     /> 
         </SafeAreaView>

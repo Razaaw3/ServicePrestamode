@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
         backgroundColor:CommonStyle.AppThemeDark,
         width:windowWidth*1.0,
         height:windowHeight*1.0,
-        // paddingBottom:15
     },
     HeaderContainer:{
         backgroundColor:CommonStyle.white,
@@ -24,30 +23,9 @@ const styles = StyleSheet.create({
         paddingHorizontal:20,
         paddingVertical:15
     },
-    container:{
-        width:289,
-        height:90,
-        // backgroundColor:'red',
-        alignSelf:'center',
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:50
-    },
     ImagesStyle: {
         width:'100%',
         height:'100%'
-      },
-      borderContainer:{
-          flexDirection:'row',
-          alignItems:'center',
-          marginHorizontal:30,
-          borderBottomWidth:1,
-          borderBottomColor:'#E4EBF9',
-      },
-      whiteContainer:{
-          backgroundColor:CommonStyle.AppThemeLight,
-          paddingVertical:15,
-        
       },
       inputFields:{
           width:'90%',
@@ -89,6 +67,12 @@ const styles = StyleSheet.create({
     },
       inputContainer:{
           marginVertical:20
+      },
+      inputFieldsText:{
+        fontFamily: CommonStyle.Regular,
+        fontSize: 16,
+        width: '85%',
+        alignSelf: 'center',
       }
 })
 export default styles;

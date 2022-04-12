@@ -10,38 +10,15 @@ import {
     Dimensions
 } from 'react-native';
 import styles from './styles';
-import {             
-    CodeField,
-    Cursor,
-    useBlurOnFulfill,
-    useClearByFocusCell,
-  } from 'react-native-confirmation-code-field';
 import * as CommonStyle from '../../helper/CommonStyle';
 import Bars from '../../../Image/bars.png'
-import Button from '../../Components/Button/index';
-import Header from '../../Components/AuthHeader/index';
-import Icon from 'react-native-vector-icons/AntDesign';
-import BGPIC from '../../../Image/logo.png';
-import CB from '../../../Image/CB.png'
-import Calender from '../../../Image/calendar.png'
-import Crypto from '../../../Image/crypto.png'
-// import { TextInput } from 'react-native-paper';
-const CELL_COUNT = 4;
+import { useTranslation } from 'react-i18next';
 const Index = (Routprops) => {
     const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-    const [Content, setContent] = useState('Lorem ipsum dolor sit amet,consetetur sadipscing elitr, sed diam nonumy eirmod');
-    const [value, setValue] = useState('');
-    const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-    value,
-    setValue,
-  });
-  const [time,settime] = useState('');
+  const {t,i18n}=useTranslation();
     const CHECK = () => {
         Routprops.navigation.navigate('Jobs')
     }
-    // return <Text>Example {time}</Text>
     return ( 
         <SafeAreaView style={styles.MainContainer}>
             <ScrollView>
@@ -52,18 +29,18 @@ const windowHeight = Dimensions.get('window').height;
             </View>
             </TouchableOpacity>
             <View>
-                <Text style={{color:CommonStyle.BlueColor, fontSize:24, fontFamily:CommonStyle.Bold}}>Prestations</Text>
+                <Text style={{color:CommonStyle.BlueColor, fontSize:24, fontFamily:CommonStyle.Bold}}>{t("Prestations")}</Text>
             </View>
         </View>
         <View style={{marginVertical:22}}>
-            <Text style={{color:CommonStyle.Date, fontSize:14, fontFamily:CommonStyle.Regular,textAlign:'center'}}>Modifier métier</Text>
+            <Text style={{color:CommonStyle.Date, fontSize:14, fontFamily:CommonStyle.Regular,textAlign:'center'}}>{t("Modifier métier")}</Text>
         </View>
         <View style={styles.inputContainer}>
                 <View style={styles.inputFields}>
-                    <Text style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'80%',alignSelf:'center',color:CommonStyle.Date}}>Extension de cils</Text>
+                    <Text style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'80%',alignSelf:'center',color:CommonStyle.Date}}>{t("Extension de cils")}</Text>
                 </View>
                 <View style={styles.inputField}>
-                    <TextInput numberOfLines={7} multiline={true} placeholder='Description' placeholderTextColor='rgba(28,28,28,0.2)' style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'85%',alignSelf:'center'}}/>
+                    <TextInput numberOfLines={7} multiline={true} placeholder={t('Description')} placeholderTextColor='rgba(28,28,28,0.2)' style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'85%',alignSelf:'center'}}/>
                 </View>
                 <View style={styles.inputFields}>
                     <TextInput placeholder='0,00€' keyboardType='number-pad' placeholderTextColor={CommonStyle.Date} style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'85%',alignSelf:'center'}}/>
@@ -81,7 +58,7 @@ const windowHeight = Dimensions.get('window').height;
           justifyContent: 'center',
         }}
         >
-        <Text style={styles.Buttontext}>Ajouter une image</Text>
+        <Text style={styles.Buttontext}>{t("Ajouter une image")}</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.ButtonContainer}>
@@ -96,16 +73,16 @@ const windowHeight = Dimensions.get('window').height;
         }}
         onPress={CHECK}
         >
-        <Text style={styles.Buttontext}>Valider</Text>
+        <Text style={styles.Buttontext}>{t("Valider")}</Text>
       </TouchableOpacity>
     </View>
     </View>
     <View style={styles.inputContainer}>
                 <View style={styles.inputFields}>
-                    <Text style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'80%',alignSelf:'center',color:CommonStyle.Date}}>Réhaussement de cils</Text>
+                    <Text style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'80%',alignSelf:'center',color:CommonStyle.Date}}>{t("Réhaussement de cils")}</Text>
                 </View>
                 <View style={styles.inputField}>
-                    <TextInput numberOfLines={7} multiline={true} placeholder='Description' placeholderTextColor='rgba(28,28,28,0.2)' style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'85%',alignSelf:'center'}}/>
+                    <TextInput numberOfLines={7} multiline={true} placeholder={t('Description')} placeholderTextColor='rgba(28,28,28,0.2)' style={{fontFamily:CommonStyle.Regular,fontSize:16,width:'85%',alignSelf:'center'}}/>
                 </View>
     </View>
        

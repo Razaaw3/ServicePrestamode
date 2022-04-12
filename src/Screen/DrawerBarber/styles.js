@@ -37,18 +37,6 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%'
       },
-      borderContainer:{
-          flexDirection:'row',
-          alignItems:'center',
-          marginHorizontal:30,
-          borderBottomWidth:1,
-          borderBottomColor:'#E4EBF9',
-      },
-      whiteContainer:{
-          backgroundColor:CommonStyle.AppThemeLight,
-          paddingVertical:15,
-        
-      },
       inputFields:{
           flexDirection:'row',
           width:'90%',
@@ -82,6 +70,14 @@ const styles = StyleSheet.create({
     },
       inputContainer:{
           marginVertical:20
+      },
+    textStyle:{
+        fontFamily: CommonStyle.Regular,
+        fontSize: 14,
+        width: '80%',
+        alignSelf: 'center',
+        color: '#042C5C',
+        marginLeft: 25,
       }
 })
 export default styles;

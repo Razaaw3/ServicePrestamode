@@ -5,13 +5,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     MainContainer : {
         backgroundColor:CommonStyle.AppThemeDark,
-        // height:windowHeight*1.0,
         height:'100%',
-    },
-    MainDrawer:{
-      width:'100%',
-      // height:windowHeight*1.0,
-      backgroundColor:CommonStyle.AppThemeDark
     },
     HeaderContainer:{
         backgroundColor:CommonStyle.white,
@@ -59,10 +53,6 @@ paddingHorizontal:5,
 paddingVertical:3
 
     },
-    ButtonContainer: {
-        // width: windowWidth * 1.0,
-        // height: windowHeight * 0.08,
-      },
       Buttontext: {
         fontSize: 14,
         textAlign: 'center',

@@ -22,18 +22,6 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%'
       },
-      borderContainer:{
-          flexDirection:'row',
-          alignItems:'center',
-          marginHorizontal:30,
-          borderBottomWidth:1,
-          borderBottomColor:'#E4EBF9',
-      },
-      whiteContainer:{
-          backgroundColor:CommonStyle.AppThemeLight,
-          paddingVertical:15,
-        
-      }
     
 })
 export default styles;

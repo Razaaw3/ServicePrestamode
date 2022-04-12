@@ -25,49 +25,9 @@ const styles = StyleSheet.create({
         paddingHorizontal:20,
         paddingVertical:15
     },
-    container:{
-        width:289,
-        height:90,
-        // backgroundColor:'red',
-        alignSelf:'center',
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:50
-    },
     ImagesStyle: {
         width:'100%',
         height:'100%'
-      },
-      borderContainer:{
-          flexDirection:'row',
-          alignItems:'center',
-          marginHorizontal:30,
-          borderBottomWidth:1,
-          borderBottomColor:'#E4EBF9',
-      },
-      whiteContainer:{
-          backgroundColor:CommonStyle.AppThemeLight,
-          paddingVertical:15,
-        
-      },
-      inputFields:{
-          width:'90%',
-          height: 43,
-          backgroundColor:CommonStyle.AppThemeLight,
-          alignSelf:'center',
-          borderRadius:7,
-          shadowColor: "#000",
-          shadowOffset: {
-              width: 0,
-              height: 2,
-          },
-          shadowOpacity: 0.23,
-          shadowRadius: 2.62,
-          
-          elevation: 4,
-        marginVertical:10,
-        justifyContent:'center'
-
       },
       inputField:{
         width:'90%',
@@ -87,9 +47,7 @@ const styles = StyleSheet.create({
       marginVertical:10,
 
     },
-      inputContainer:{
-        //   marginVertical:5
-      },
+
       ButtonContainer: {
         width: windowWidth * 1.0,
         height: windowHeight * 0.089,
