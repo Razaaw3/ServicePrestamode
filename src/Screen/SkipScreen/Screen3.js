@@ -1,23 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/Octicons';
 import Logo from '../../../Image/logo.png';
-import BGPIC from '../../../Image/skip3.png';
-const Screen3 = props => {
-  const previous = () => {
-    props.navigation.navigate('Screen2');
-  };
-  const Next = () => {
-    props.navigation.navigate('LoginSignUp');
-  };
+import BGPIC from '../../../Image/skip1.png';
+import abc from '../../../Image/skip2.png';
+import def from '../../../Image/skip3.png';
+import {SliderBox} from 'react-native-image-slider-box'
+import {useTranslation} from 'react-i18next';
+
+import '../../config/i18n/index'
+import * as i18n from 'i18next'
+
+const Screen3 = (props) => {
+  const {t,i18n} = useTranslation(); 
+  const [Images, setImages] = useState([BGPIC,abc,def]);
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView>
@@ -25,40 +21,22 @@ const Screen3 = props => {
           <Image source={Logo} style={styles.ImagesStyle} />
           <View style={{marginTop: 25}} />
           <View>
-            <Text style={styles.Content}>Filtrez</Text>
+            <Text style={styles.Content}>{t("Réservez")}</Text>
           </View>
-          <View>
-            <Image source={BGPIC} style={styles.ImageStyle} />
+          <View style={{marginTop:150}}>
+          <SliderBox 
+                    images={Images}
+                    sliderBoxHeight={500}
+                    resizeMode={'contain'}
+                    ImageComponentStyle={styles.ImagesStyle}
+                />
           </View>
           <View style={{flexDirection: 'row'}}>
             <View style={styles.BottomLeft}>
-              <TouchableOpacity onPress={previous}>
-                <Text style={styles.LeftText}>Précédent</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.Middle}>
-              <Icon
-                name="dot-fill"
-                size={20}
-                color="lightgray"
-                style={styles.DotIcon}
-              />
-              <Icon
-                name="dot-fill"
-                size={20}
-                color="lightgray"
-                style={styles.DotIcon}
-              />
-              <Icon
-                name="dot-fill"
-                size={20}
-                color="#14213D"
-                style={styles.DotIcon}
-              />
             </View>
             <View style={styles.BottomRight}>
-              <TouchableOpacity onPress={Next}>
-                <Text style={styles.RightText}>Suivant</Text>
+              <TouchableOpacity onPress={()=>props.navigation.navigate('LoginSignUp')}>
+                <Text style={styles.RightText}>{t("Suivant")}</Text>
               </TouchableOpacity>
             </View>
           </View>

@@ -38,8 +38,9 @@ const styles = StyleSheet.create({
       },
       RightText:{
         marginTop:3,
-        textAlign:'right',
-        marginRight:30
+        // textAlign:'right',
+        marginRight:30,
+        color:CommonStyle.dark
       },
       Middle:{
         flexDirection:'row',
@@ -51,10 +52,17 @@ const styles = StyleSheet.create({
         marginLeft:5
       },
       BottomRight:{
-        width:'43%',
-        height:30,
+        marginLeft:'auto',
+        marginRight:20,
         marginTop:85,
-        marginLeft:35
+      },
+      BottomRights:{
+        flexDirection:'row',
+        marginRight:'auto',
+        marginLeft:'auto',
+        marginTop:85,
+        justifyContent:'space-between',
+        width:'80%'
       },
 })
 export default styles;

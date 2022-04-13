@@ -6,6 +6,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import styles from './styles';
 import {
@@ -40,6 +42,9 @@ const VarificationCode = Routprops => {
   };
   return (
     <SafeAreaView style={styles.MainContainer}>
+        <KeyboardAvoidingView
+        keyboardVerticalOffset={80}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <View style={styles.container}>
           <Image source={BGPIC} style={styles.ImagesStyle} />
@@ -104,6 +109,7 @@ const VarificationCode = Routprops => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

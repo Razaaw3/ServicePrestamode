@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import styles from './styles';
 
@@ -50,8 +51,8 @@ const Index = Routprops => {
   };
   return (
     <SafeAreaView style={styles.MainContainer}>
-      <KeyboardAvoidingView
-        style={{flex: 1}}
+     <KeyboardAvoidingView
+        keyboardVerticalOffset={80}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView>
           <View style={styles.container}>

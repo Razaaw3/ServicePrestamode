@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import styles from './styles';
 import {
@@ -59,6 +60,7 @@ const Index = Routprops => {
     <SafeAreaView style={styles.MainContainer}>
       <DropdownAlert ref={dropDownAlertRef} />
       <KeyboardAvoidingView
+        keyboardVerticalOffset={80}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView>
           <View style={styles.container}>

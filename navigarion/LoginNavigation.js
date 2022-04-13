@@ -10,17 +10,11 @@ import SignUp from '../src/Screen/signup/index';
 import Screen1 from '../src/Screen/SkipScreen/Screen1';
 import Screen2 from '../src/Screen/SkipScreen/Screen2';
 import Screen3 from '../src/Screen/SkipScreen/Screen3';
-import Drawer from '../src/Screen/Drawer/index';
-import MyReservation from '../src/Screen/Myreservations/index';
 import LeaveComment from '../src/Screen/LeaveComment/index'
-import BookService from '../src/Screen/BookService/Index'
-import BookDetail from '../src/Screen/BookDetail/Index'
-import Meeting from '../src/Screen/Meeting/Index'
 import Inbox from '../src/Screen/Inbox/Index'
 import Jobs from '../src/Screen/Jobs/Index'
 import Chat from '../src/Screen/Chat/Index'
 import Translation from '../src/Screen/Translation/Index'
-import MeetingConfirm from '../src/Screen/Meeting/MeetConfirm'
 import Subscription from '../src/Screen/Subscription/Index'
 import Welcome from '../src/Screen/Welcome/Index'
 import Profile from '../src/Screen/Profile/Index'
@@ -47,13 +41,7 @@ const LoginNavigation = () => {
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="PhoneNumber" component={PhoneNumber} />
                 <Stack.Screen name="VerificationCode" component={VerificationCode} />
-                <Stack.Screen name="Drawer" component={Drawer} />
-                <Stack.Screen name="MyReservation" component={MyReservation} />
                 <Stack.Screen name="LeaveComment" component={LeaveComment} />
-                <Stack.Screen name="BookService" component={BookService} />
-                <Stack.Screen name="BookDetail" component={BookDetail} />
-                <Stack.Screen name="Meeting" component={Meeting} />
-                <Stack.Screen name="MeetingConfirm" component={MeetingConfirm} />
                 <Stack.Screen name="Inbox" component={Inbox} />
                 <Stack.Screen name="Jobs" component={Jobs} />
                 <Stack.Screen name="Translation" component={Translation} />

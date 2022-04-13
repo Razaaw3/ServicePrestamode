@@ -6,6 +6,8 @@ import {
   Text,
   Image,
   TextInput,
+  Platform,
+  KeyboardAvoidingView
 } from 'react-native';
 import styles from '../varficationCode/styles';
 import Button from '../../Components/Button/index';
@@ -29,6 +31,9 @@ const Index = Routprops => {
   };
   return (
     <SafeAreaView style={styles.MainContainer}>
+       <KeyboardAvoidingView
+        keyboardVerticalOffset={80}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <View style={styles.container}>
           <Image source={BGPIC} style={styles.ImagesStyle} />
@@ -41,8 +46,8 @@ const Index = Routprops => {
             <View>
               <PhoneInput
                 defaultValue={Value}
-                defaultCode="DM"
-                layout="first"
+                defaultCode="FR"
+                layout="second"
                 onChangeText={text => {
                   setvalue(text);
                 }}
@@ -64,6 +69,7 @@ const Index = Routprops => {
           <Button ButtonText={t('Valider')} propsFun={CHECK} />
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

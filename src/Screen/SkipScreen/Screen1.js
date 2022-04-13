@@ -6,11 +6,12 @@ import BGPIC from '../../../Image/skip1.png';
 import abc from '../../../Image/skip2.png';
 import def from '../../../Image/skip3.png';
 import {SliderBox} from 'react-native-image-slider-box'
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+
+import '../../config/i18n/index'
 
 const Screen1 = (props) => {
   const {t,i18n} = useTranslation(); 
-  
   const [Images, setImages] = useState([BGPIC,abc,def]);
   return (
     <SafeAreaView style={styles.MainContainer}>
@@ -19,7 +20,7 @@ const Screen1 = (props) => {
           <Image source={Logo} style={styles.ImagesStyle} />
           <View style={{marginTop: 25}} />
           <View>
-            <Text style={styles.Content}>{t('Cherchez')}</Text>
+            <Text style={styles.Content}>{t("Cherchez")}</Text>
           </View>
           <View style={{marginTop:150}}>
           <SliderBox 
@@ -30,11 +31,9 @@ const Screen1 = (props) => {
                 />
           </View>
           <View style={{flexDirection: 'row'}}>
-            <View style={styles.BottomLeft}>
-            </View>
             <View style={styles.BottomRight}>
-              <TouchableOpacity onPress={()=>props.navigation.navigate('LoginSignUp')}>
-                <Text style={styles.RightText}>{t('Suivant')}</Text>
+              <TouchableOpacity onPress={()=>props.navigation.navigate('Screen2')}>
+                <Text style={styles.RightText}>{t("Suivant")}</Text>
               </TouchableOpacity>
             </View>
           </View>
