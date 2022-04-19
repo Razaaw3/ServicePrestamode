@@ -27,6 +27,16 @@ import DrawerBarber from '../src/Screen/DrawerBarber/Index'
 import Login from '../src/Screen/login/index'
 
 const LoginNavigation = () => {
+    const Auth = () => {
+        return (
+          <Stack.Navigator
+            initialRouteName="SignUp"
+            screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+          </Stack.Navigator>
+        );
+      };
     return ( 
         <NavigationContainer>
             <Stack.Navigator initialRouteName='SplashScreen' screenOptions={{
@@ -38,7 +48,7 @@ const LoginNavigation = () => {
                 <Stack.Screen name="Screen2" component={Screen2}/>
                 <Stack.Screen name="Screen3" component={Screen3} />
                 <Stack.Screen name="LoginSignUp" component={LoginSignUp} />
-                <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="Auth" component={Auth} />
                 <Stack.Screen name="PhoneNumber" component={PhoneNumber} />
                 <Stack.Screen name="VerificationCode" component={VerificationCode} />
                 <Stack.Screen name="LeaveComment" component={LeaveComment} />

@@ -12,9 +12,14 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Logo from '../../../Image/logo.png';
 import { useTranslation } from 'react-i18next';
+import auth from '@react-native-firebase/auth';
 const CELL_COUNT = 4;
 const Index = Routprops => {
     const {t,i18n}=useTranslation();
+    const logout =()=>{
+      auth().signOut()
+  .then(() => Routprops.navigation.replace('Login'));
+    }
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView>
@@ -101,7 +106,7 @@ const Index = Routprops => {
               />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={logout}>
             <View style={styles.inputField}>
               <Text style={styles.textStyle}>{t('Déconnexion')}</Text>
             </View>

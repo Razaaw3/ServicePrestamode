@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "212141452853",
+    "firebase_url": "https://pretanode-default-rtdb.firebaseio.com",
+    "project_id": "pretanode",
+    "storage_bucket": "pretanode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212141452853:android:d0e8ffb7ffeb017b754b7c",
+        "android_client_info": {
+          "package_name": "com.prestamode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212141452853-74aij0bdudh16ue2oqc7js0t93micdgi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prestamode",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "212141452853-gvpfrgti2ccqgjvmru7kler7ullknmam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYTdEW8-iqAvScBOQonOfKQBsOk_kXvIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212141452853-gvpfrgti2ccqgjvmru7kler7ullknmam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

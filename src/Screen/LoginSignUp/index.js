@@ -9,7 +9,7 @@ const LoginSignUp = props => {
     props.navigation.navigate('Login');
   };
   const RoutSIGNUP = () => {
-    props.navigation.navigate('SignUp');
+    props.navigation.navigate('Auth');
   };
   const [Images, setImages] = useState(BGPIC);
   const {t, i18n} = useTranslation();

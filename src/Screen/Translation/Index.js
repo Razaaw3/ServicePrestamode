@@ -1,4 +1,5 @@
 import React, { useState , useEffect} from 'react';
+import auth from '@react-native-firebase/auth';
 import {
     View,
     SafeAreaView,
@@ -49,7 +50,7 @@ const Index = (Routprops) => {
           .catch(err => console.log(err));
       }
       const ChangeLanguageFun = () => {
-        Routprops.navigation.navigate('Screen1')
+        Routprops.navigation.navigate( auth().currentUser ? "DrawerBarber" : "Screen1");
     }
     return ( 
         <SafeAreaView style={styles.MainContainer}>

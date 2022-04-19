@@ -8,45 +8,65 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Platform
 } from 'react-native';
 import styles from './styles';
 import {
+  CodeField,
+  Cursor,
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import {useTranslation} from 'react-i18next';
 import DropdownAlert from 'react-native-dropdownalert';
 import * as CommonStyle from '../../helper/CommonStyle';
+import Bars from '../../../Image/bars.png';
 import Button from '../../Components/Button/index';
 var validator = require('validator');
 import BGPIC from '../../../Image/logo.png';
+
+// import { TextInput } from 'react-native-paper';
 import PhoneInput from 'react-native-phone-number-input';
+import {useTranslation} from 'react-i18next';
+// import { auth } from 'react-native-firebase';
+import auth from '@react-native-firebase/auth';
 const CELL_COUNT = 4;
 const Index = Routprops => {
   const {t, i18n} = useTranslation();
+  const [Content, setContent] = useState(
+    'Lorem ipsum dolor sit amet,consetetur sadipscing elitr, sed diam nonumy eirmod',
+  );
   const [value, setValue] = useState('');
   const [Value, setvalue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
+  const [valid, setValid] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [Password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [Pass, setPass] = useState(true);
+  const [phoneNumber, setPhoneNumber] = useState(''); //shadinaif@gmail.com
+  const [Password, setPassword] = useState(''); //123123
   const [error, setError] = useState('');
   let dropDownAlertRef = useRef(null);
-  const ComEmail = validator.isEmpty(phoneNumber);
+  const ComEmail = validator.isEmpty(email);
   const ComPassword = validator.isEmpty(Password);
 
   const CHECK = () => {
     if (ComEmail === true) {
-      setError('Phone-Number is Empty');
+      setError('Email is Empty');
     } else if (ComPassword === true) {
       setError('Password is Empty');
     } else {
-      dropDownAlertRef.current?.alertWithType(
+      
+      auth()
+      .signInWithEmailAndPassword(email, Password)
+      .then((user) => {
+        console.log(user);
+        if (user){
+          setError('')
+         dropDownAlertRef.current?.alertWithType(
         'success',
         'Success',
         'Successfully Login',
@@ -54,20 +74,43 @@ const Index = Routprops => {
       setTimeout(() => {
         Routprops.navigation.navigate('DrawerBarber');
       }, 2000);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.code === "auth/invalid-email")
+        dropDownAlertRef.current?.alertWithType(
+          'error',
+          'Error',
+          error.message
+        );
+          
+        else if (error.code === "auth/user-not-found")
+        dropDownAlertRef.current?.alertWithType(
+          'error',
+          'Error',
+          "No User Found"
+        );
+        else {
+          setError(
+            "Please check your email id or password"
+          );
+        }
+      });
     }
   };
+  
   return (
     <SafeAreaView style={styles.MainContainer}>
       <DropdownAlert ref={dropDownAlertRef} />
       <KeyboardAvoidingView
-        keyboardVerticalOffset={80}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView>
           <View style={styles.container}>
             <Image source={BGPIC} style={styles.ImagesStyle} />
           </View>
           <View style={styles.inputContainer}>
-            <View style={styles.InputStyleMains}>
+            {/* <View style={styles.InputStyleMains}>
               <PhoneInput
                 defaultValue={Value}
                 defaultCode="DM"
@@ -80,7 +123,16 @@ const Index = Routprops => {
                 }}
                 style={styles.InputStyles}
               />
+            </View> */}
+             <View style={styles.inputFields}>
+              <TextInput
+                style={{marginLeft: 20}}
+                placeholder="E-mail"
+                placeholderTextColor="rgba(28,28,28,.4)"
+                onChangeText={name => setEmail(name)}
+              />
             </View>
+            {/* <Text style={{alignSelf:'center',color:'red',fontFamily:CommonStyle.Regular,fontSize:12}}>{error}</Text> */}
             <View style={styles.inputFields}>
               <TextInput
                 onChangeText={Email => setPassword(Email)}
@@ -101,7 +153,7 @@ const Index = Routprops => {
                 fontFamily: CommonStyle.Regular,
                 fontSize: 12,
               }}>
-              {error}
+              {t(error)}
             </Text>
           </View>
         </ScrollView>

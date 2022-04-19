@@ -3,29 +3,51 @@ import {
   View,
   SafeAreaView,
   ScrollView,
+  Platform,
   Text,
   Image,
   TextInput,
   KeyboardAvoidingView,
-  Platform
 } from 'react-native';
+import DropdownAlert from 'react-native-dropdownalert';
 import styles from './styles';
-
 import Button from '../../Components/Button/index';
 import * as CommonStyle from '../../helper/CommonStyle';
-
+import {useTranslation} from 'react-i18next';
+import auth from '@react-native-firebase/auth';
+import firebase from '@react-native-firebase/app'
 var validator = require('validator');
 import BGPIC from '../../../Image/logo.png';
-import {useTranslation} from 'react-i18next';
-
-const Index = Routprops => {
+const VarificationCode = Routprops => {
   const {t, i18n} = useTranslation();
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [firstName, setFirstName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
+
+  // const [name, setName] = useState('')
   const [Password, setPassword] = useState('');
+  let dropDownAlertRef = useRef(null);
+  // const Login = () => {
+  //   console.log("Login")
+  //   firebase.auth()
+  //   .signInWithEmailAndPassword('janedoe@example.com', 'SuperSecretPassword!')
+  //   .then(() => {
+  //     console.log('User account created & signed in!');
+  //   })
+  //   .catch(error => {
+  //     if (error.code === 'auth/email-already-in-use') {
+  //       console.log('That email address is already in use!');
+  //     }
+  
+  //     if (error.code === 'auth/invalid-email') {
+  //       console.log('That email address is invalid!');
+  //     }
+  
+  //     console.error("Error is ",error);
+  //   });
+  // }
   const CHECK = () => {
     const ComEmail = validator.isEmpty(email);
     const ValEmail = validator.isEmail(email);
@@ -46,13 +68,52 @@ const Index = Routprops => {
     } else if (ComPassword === true) {
       setError('Password is Empty');
     } else {
-      Routprops.navigation.navigate('PhoneNumber');
+     auth().createUserWithEmailAndPassword(email,Password)
+     .then((user) => {
+      dropDownAlertRef.current?.alertWithType(
+        'success',
+        'Success',
+        'Successfully Registered',
+      );
+      if (user) {
+        auth()
+          .currentUser.updateProfile({
+            displayName: name
+          })
+          .then(() => Routprops.navigation.replace("Login"))
+          .catch((error) => {
+            dropDownAlertRef.current?.alertWithType(
+              'error',
+              'Error',
+              error,
+            );
+          });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        dropDownAlertRef.current?.alertWithType(
+          'error',
+          'Error',
+          "That email address is already in use!"
+        );
+      } else {
+        dropDownAlertRef.current?.alertWithType(
+          'error',
+          'Error',
+          error.message
+        );
+      }
+    });
     }
   };
   return (
     <SafeAreaView style={styles.MainContainer}>
-     <KeyboardAvoidingView
+      <DropdownAlert ref={dropDownAlertRef} />
+      <KeyboardAvoidingView
         keyboardVerticalOffset={80}
+        style={{flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView>
           <View style={styles.container}>
@@ -60,42 +121,48 @@ const Index = Routprops => {
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("Nom")}
+                placeholder={t('Nom')}
+                placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setName(name)}
               />
             </View>
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("Prénom")}
+                placeholder={t('Prénom')}
+                placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setFirstName(name)}
               />
             </View>
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("E-mail")}
+                placeholder="E-mail"
+                placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setEmail(name)}
               />
             </View>
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("Adresse")}
+                placeholder="Adresse"
+                placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setAddress(name)}
               />
             </View>
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("Mot de passe")}
+                placeholder={t('Mot de passe')}
+                placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setPassword(name)}
               />
             </View>
             <View style={styles.InputContainer}>
               <TextInput
                 style={{marginLeft: 20}}
-                placeholder={t("Photo de profil")}
+                placeholder={t('Photo de profil')}
+                placeholderTextColor="rgba(28,28,28,.4)"
               />
             </View>
 
@@ -120,4 +187,4 @@ const Index = Routprops => {
     </SafeAreaView>
   );
 };
-export default Index;
+export default VarificationCode;
