@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   LastText: {
     marginTop: windowHeight * 0.3,
-    fontSizeL: 14,
+    fontSize: 14,
     fontFamily: CommonStyle.Regular,
     textAlign: 'center',
   },

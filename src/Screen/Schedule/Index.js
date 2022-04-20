@@ -13,7 +13,10 @@ import * as CommonStyle from '../../helper/CommonStyle';
 import styles from './styles';
 import Bars from '../../../Image/bars.png';
 import {useTranslation} from 'react-i18next';
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import '../../config/i18n/index';
 const Index = props => {
+  const {t, i18n} = useTranslation();
   const [List, setList] = useState([
     {id: 1},
     {id: 2},
@@ -28,11 +31,11 @@ const Index = props => {
     {id: 5},
     {id: 6},
   ]);
+  const [color, setColor] = useState(false);
   const windowHeight = Dimensions.get('window').height;
   const [coutures, setCoutures] = useState(false);
-  const {t, i18n} = useTranslation();
   const Next = () => {
-    props.navigation.navigate('Inbox');
+    props.navigation.navigate('History');
   };
   const FlatListViews = ({item, index}) => {
     return (
@@ -65,7 +68,7 @@ const Index = props => {
                 fontSize: 14,
                 color: '#2A2AC0',
               }}>
-              {t('12/01/2019')}
+              12/01/2019
             </Text>
           </View>
           <View
@@ -88,7 +91,7 @@ const Index = props => {
                 fontSize: 14,
                 color: '#2A2AC0',
               }}>
-              {t('14:30')}
+              14:30
             </Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -104,11 +107,14 @@ const Index = props => {
                   justifyContent: 'center',
                 }}
                 onPress={Next}>
-                <Text style={styles.Buttontext}>{t('Envoyer un message')}</Text>
+                <Text style={styles.Buttontexts}>
+                  {t('Envoyer un message')}
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.ButtonContainer}>
               <TouchableOpacity
+                onPress={Next}
                 style={{
                   width: 130,
                   alignSelf: 'center',
@@ -118,7 +124,7 @@ const Index = props => {
                   backgroundColor: CommonStyle.RedButton,
                   justifyContent: 'center',
                 }}>
-                <Text style={styles.Buttontext}>{t('Annuler')}</Text>
+                <Text style={styles.Buttontexts}>{t('Annuler')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -126,12 +132,24 @@ const Index = props => {
       </TouchableOpacity>
     );
   };
+  const FlatListView = ({item, index}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          setColor(true);
+        }}>
+        <View style={styles.time}>
+          <Text style={styles.Buttontext}>8:00-10:00</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  const New = () => {};
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView>
         <View style={styles.HeaderContainer}>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate('DrawerBarber')}>
+          <TouchableOpacity onPress={()=>props.navigation.navigate('DrawerBarber')}>
             <View
               style={{height: 20, width: 20, marginBottom: 20, marginTop: 6}}>
               <Image
@@ -175,19 +193,57 @@ const Index = props => {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{marginHorizontal: 25, marginVertical: 12}}>
-          <Text
-            style={{
-              fontSize: 16,
-              fontFamily: CommonStyle.Bold,
-              color: CommonStyle.dark,
-            }}>
-            {t('Réservations à venir')}
-          </Text>
-        </View>
-        <View style={{marginHorizontal: 25}}>
-          <FlatList data={List} renderItem={FlatListViews} />
-        </View>
+        {coutures === false ? (
+          <>
+            <View style={{marginHorizontal: 25, marginVertical: 12}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: CommonStyle.Bold,
+                  color: CommonStyle.dark,
+                }}>
+                {t('Réservations à venir')}
+              </Text>
+            </View>
+
+            <View style={{marginHorizontal: 25}}>
+              <FlatList data={List} renderItem={FlatListViews} />
+            </View>
+          </>
+        ) : (
+          <>
+            <View
+              style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
+              <Calendar
+                current={new Date()}
+                theme={{
+                  selectedDayBackgroundColor: 'blue',
+                  selectedDayTextColor: '#ffffff',
+                  todayTextColor: '#00adf5',
+                  dayTextColor: '#2d4150',
+                }}
+                onDayPress={day => {
+                  console.log('selected day', day.dateString);
+                }}
+              />
+            </View>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '90%',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}>
+              <FlatList
+                key={'_'}
+                numColumns={2}
+                data={List}
+                renderItem={FlatListView}
+              />
+            </View>
+          </>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

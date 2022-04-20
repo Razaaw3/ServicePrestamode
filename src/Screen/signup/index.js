@@ -15,7 +15,7 @@ import Button from '../../Components/Button/index';
 import * as CommonStyle from '../../helper/CommonStyle';
 import {useTranslation} from 'react-i18next';
 import auth from '@react-native-firebase/auth';
-import firebase from '@react-native-firebase/app'
+import database from '@react-native-firebase/database';
 var validator = require('validator');
 import BGPIC from '../../../Image/logo.png';
 const VarificationCode = Routprops => {
@@ -29,25 +29,6 @@ const VarificationCode = Routprops => {
   // const [name, setName] = useState('')
   const [Password, setPassword] = useState('');
   let dropDownAlertRef = useRef(null);
-  // const Login = () => {
-  //   console.log("Login")
-  //   firebase.auth()
-  //   .signInWithEmailAndPassword('janedoe@example.com', 'SuperSecretPassword!')
-  //   .then(() => {
-  //     console.log('User account created & signed in!');
-  //   })
-  //   .catch(error => {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       console.log('That email address is already in use!');
-  //     }
-  
-  //     if (error.code === 'auth/invalid-email') {
-  //       console.log('That email address is invalid!');
-  //     }
-  
-  //     console.error("Error is ",error);
-  //   });
-  // }
   const CHECK = () => {
     const ComEmail = validator.isEmpty(email);
     const ValEmail = validator.isEmail(email);
@@ -75,6 +56,17 @@ const VarificationCode = Routprops => {
         'Success',
         'Successfully Registered',
       );
+      let userid=Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      console.log("USer id is +Ods", userid)
+      database().ref('user').child('loginuserdata').push({
+          UserID:userid,
+          Name:name,
+          Email:email,
+          Password:Password,
+          Address:address,
+          FirstName:firstName
+          // Pic:this.state.avatarSource,
+          })
       if (user) {
         auth()
           .currentUser.updateProfile({

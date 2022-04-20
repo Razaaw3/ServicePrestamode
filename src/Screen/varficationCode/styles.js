@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
         fontSize:12,
         fontFamily:CommonStyle.Bold,
         marginLeft:windowWidth*.04,
+        color:CommonStyle.dark
     },
     ChangeContainer:{
         flex:1,
