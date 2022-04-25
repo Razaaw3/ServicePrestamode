@@ -41,7 +41,7 @@ const Index = Routprops => {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => Routprops.navigation.navigate('Benifits')}>
+            onPress={() => Routprops.navigation.navigate('Jobs')}>
             <View style={styles.inputFields}>
               <Text style={styles.textStyle}>{t('Prestations')}</Text>
               <Icon

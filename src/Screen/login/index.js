@@ -30,6 +30,12 @@ import {useTranslation} from 'react-i18next';
 import auth from '@react-native-firebase/auth';
 const CELL_COUNT = 4;
 const Index = Routprops => {
+  // const uid = Routprops.route.params.id;
+  // useEffect(() => {
+  //   console.log(uid)
+  // }, [])
+  
+
   const {t, i18n} = useTranslation();
   const [Content, setContent] = useState(
     'Lorem ipsum dolor sit amet,consetetur sadipscing elitr, sed diam nonumy eirmod',
@@ -54,6 +60,7 @@ const Index = Routprops => {
   const ComPassword = validator.isEmpty(Password);
 
   const CHECK = () => {
+    
     if (ComEmail === true) {
       setError('Email is Empty');
     } else if (ComPassword === true) {

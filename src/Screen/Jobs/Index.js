@@ -10,12 +10,14 @@ import {
   TextInput,
 } from 'react-native';
 import {Provider} from 'react-native-paper';
+import Arrow from 'react-native-vector-icons/MaterialIcons';
 import MultiSelect from 'react-native-multiple-select';
 import {useTranslation} from 'react-i18next';
 import * as CommonStyle from '../../helper/CommonStyle';
 import styles from './styles';
 import Back from 'react-native-vector-icons/Ionicons';
 import ButtonS from '../../Components/Button/index';
+import * as Services from '../../config/JSONS/Services'
 
 const Index = props => {
   const {t, i18n} = useTranslation();
@@ -23,80 +25,70 @@ const Index = props => {
   const [coiffure, setCoiffure] = useState(false);
   const [coutures, setCoutures] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-  const items = [
-    {
-      id: '92iijs7yta',
-      name: 'Ondo',
-    },
-    {
-      id: 'a0s0a8ssbsd',
-      name: 'Ogun',
-    },
-    {
-      id: '16hbajsabsd',
-      name: 'Calabar',
-    },
-    {
-      id: 'nahs75a5sg',
-      name: 'Lagos',
-    },
-    {
-      id: '667atsas',
-      name: 'Maiduguri',
-    },
-    {
-      id: 'hsyasajs',
-      name: 'Anambra',
-    },
-    {
-      id: 'djsjudksjd',
-      name: 'Benue',
-    },
-    {
-      id: 'sdhyaysdj',
-      name: 'Kaduna',
-    },
-    {
-      id: 'suudydjsjd',
-      name: 'Abuja',
-    },
-    {
-      id: 'a0s0a8ssbsd',
-      name: 'Ogun',
-    },
-    {
-      id: '16hbajsabsd',
-      name: 'Calabar',
-    },
-    {
-      id: 'nahs75a5sg',
-      name: 'Lagos',
-    },
-    {
-      id: '667atsas',
-      name: 'Maiduguri',
-    },
-    {
-      id: 'hsyasajs',
-      name: 'Anambra',
-    },
-    {
-      id: 'djsjudksjd',
-      name: 'Benue',
-    },
-    {
-      id: 'sdhyaysdj',
-      name: 'Kaduna',
-    },
-    {
-      id: 'suudydjsjd',
-      name: 'Abuja',
-    },
-  ];
+  const [width, setWidth] = useState(false)
+
+  const [services, setServices] = useState('');
+
+  // ARRAYS 
+  const [coutureServices, setcoutureServices] = useState(Services.couture)
+  const [coiffureServices, setcoiffureServices] = useState(Services.coiffure)
+  const [esthetiqueServices, setesthetiqueServices] = useState(Services.esthetique)
+
+
+  const [servicesHandler, setservicesHandler] = useState(Services.esthetique)
+  const [serviceAray, setServiceAray] = useState([])
+  const serviceArrayHandler = (item) =>{
+    // console.log(item)
+    // setServices(item)
+    setServices("wa")
+      // setServiceAray((olddata)=>{
+      //     return[item,...olddata]
+      // })
+    //   console.log(serviceAray)
+    serviceAray.push(item)
+    console.log(serviceAray)
+  }
+const FlatListViews = ({item,index})=>{
+  return(
+
+    <View>
+   <Text
+        style={{
+          paddingHorizontal:15,
+          fontSize: 16,
+          fontFamily: CommonStyle.Bold,
+          color: CommonStyle.dark,
+          marginVertical:10
+        }}>
+          {item.heading}
+      </Text>
+      {item.services.map((item,index)=>{
+                return(
+                  <TouchableOpacity onPress={serviceArrayHandler.bind(this,item)}>
+                  <Text
+              style={{
+                fontSize: 14,
+                fontFamily: CommonStyle.Regular,
+                color: CommonStyle.dark,
+                paddingHorizontal:30,
+                paddingVertical:4
+              }}>
+                  {item} 
+                  </Text>
+                  </TouchableOpacity>
+                )
+
+              })} 
+  </View>
+ 
+  )
+}
   const maxVal = 1900;
   const Next = () => {
-    props.navigation.navigate('DrawerBarber');
-  };
+    props.navigation.navigate('Benifits',{
+      selectedServices:serviceAray
+    });
+  }
   const FlatListView = ({item, index}) => {
     return (
       <View style={styles.listStyle}>
@@ -137,6 +129,7 @@ const Index = props => {
               setTabSelected(true);
               setCoiffure(false);
               setCoutures(true);
+              setservicesHandler(coutureServices)
             }}>
             <View
               style={
@@ -159,6 +152,7 @@ const Index = props => {
               setTabSelected(true);
               setCoiffure(true);
               setCoutures(false);
+              setservicesHandler(coiffureServices)
             }}>
             <View
               style={
@@ -181,6 +175,7 @@ const Index = props => {
               setTabSelected(false);
               setCoiffure(false);
               setCoutures(false);
+              setservicesHandler(esthetiqueServices)
             }}>
             <View
               style={
@@ -201,9 +196,9 @@ const Index = props => {
         </View>
 
         <Provider style={{width: '100%', backgroundColor: 'green'}}>
-          <MultiSelect
+          {/* <MultiSelect
             hideTags
-            items={items}
+            items={servicesHandler}
             uniqueKey="name"
             onSelectedItemsChange={onSelectedItemsChange}
             selectedItems={selectedItems}
@@ -223,7 +218,68 @@ const Index = props => {
             submitButtonText="Submit"
             styleMainWrapper={{width: '95%', alignSelf: 'center'}}
             styleListContainer={{width: '100%', height: 300}}
-          />
+          /> */}
+          
+             {width===false?<TouchableOpacity onPress={()=>setWidth(!width)}>
+             <View style={[styles.inputFields,{flexDirection:'row'}]}>              
+             
+            <View
+              style={{width: '90%', height: '100%', justifyContent: 'center'}}>
+             <Text
+                  style={{
+                    backgroundColor: CommonStyle.white,
+                    color: CommonStyle.dark,
+                    paddingHorizontal:15
+                  }}>
+                  {t('Pick up services...')}
+                </Text>
+            </View>
+            <View
+              style={{
+                width: '10%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Arrow name="keyboard-arrow-down" size={24} color="#EF233C" />
+            </View>
+          </View>
+          </TouchableOpacity>
+          :
+          <>
+          <View style={[styles.inputFields,{height:'auto'}]}>
+            
+            <View style={{height:'10%',alignItems:'center',flexDirection:'row',paddingHorizontal:10}}>      
+            <TouchableOpacity onPress={()=>setWidth(!width)} style={{flexDirection:'row',flexDirection:'row',justifyContent:'space-around'}}>       
+          <View
+            style={{ justifyContent: 'center'}}>
+           <Text
+                style={{
+                  backgroundColor: CommonStyle.white,
+                  color: CommonStyle.dark,
+                  paddingHorizontal:15
+                }}>
+                {t('Pick up services...')}
+              </Text>
+          </View>
+          <View>
+            <Arrow name="keyboard-arrow-down" size={24} color="#EF233C" />
+          </View>
+          </TouchableOpacity>
+       
+         
+        </View>
+        <View style={{width: '90%',height:'auto',zIndex:900, justifyContent: 'center'}}>
+          <FlatList
+          data={servicesHandler}
+          renderItem={FlatListViews}
+        />
+          </View> 
+        </View>
+       
+        </>
+          }
+          
+        
           <View style={{marginHorizontal: 30}}>
             <Text
               style={{
@@ -249,7 +305,7 @@ const Index = props => {
         <View style={styles.listContainer}>
           <FlatList
             // key={'_'}
-            data={selectedItems}
+            data={serviceAray}
             renderItem={FlatListView}
           />
         </View>

@@ -75,5 +75,28 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 15,
   },
+  inputFields:{
+    backgroundColor:CommonStyle.white,
+    height:43,
+    width:'85%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    borderRadius:9,
+    // flexDirection:'row',
+    marginVertical:5,
+    shadowColor: "#000",
+shadowOffset: {
+width: 0,
+height: 3,
+},
+shadowOpacity: 0.29,
+shadowRadius: 4.65,
+
+elevation: 7,
+
+},
+inputField:{
+
+},
 });
 export default styles;
