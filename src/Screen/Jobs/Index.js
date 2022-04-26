@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useId} from 'react';
 import {
   View,
   SafeAreaView,
@@ -9,6 +9,7 @@ import {
   FlatList,
   TextInput,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import {Provider} from 'react-native-paper';
 import Arrow from 'react-native-vector-icons/MaterialIcons';
 import MultiSelect from 'react-native-multiple-select';
@@ -18,13 +19,12 @@ import styles from './styles';
 import Back from 'react-native-vector-icons/Ionicons';
 import ButtonS from '../../Components/Button/index';
 import * as Services from '../../config/JSONS/Services'
-
+import database from '@react-native-firebase/database';
 const Index = props => {
   const {t, i18n} = useTranslation();
   const [tabSelected, setTabSelected] = useState(false);
   const [coiffure, setCoiffure] = useState(false);
   const [coutures, setCoutures] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
   const [width, setWidth] = useState(false)
 
   const [services, setServices] = useState('');
@@ -85,6 +85,14 @@ const FlatListViews = ({item,index})=>{
 }
   const maxVal = 1900;
   const Next = () => {
+    const uid = auth().currentUser.uid;
+    // console.log(uid)
+    database()
+  .ref(`user/${uid}`)
+ .set({
+   ServicesArray:serviceAray
+ })
+  
     props.navigation.navigate('Benifits',{
       selectedServices:serviceAray
     });
@@ -103,10 +111,6 @@ const FlatListViews = ({item,index})=>{
         <Back name="checkmark-circle" size={26} color={CommonStyle.RedButton} />
       </View>
     );
-  };
-  const onSelectedItemsChange = selectedItems => {
-    setSelectedItems(selectedItems);
-    console.log(selectedItems);
   };
   return (
     <SafeAreaView style={styles.MainContainer}>

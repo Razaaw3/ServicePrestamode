@@ -15,6 +15,7 @@ import * as CommonStyle from '../../helper/CommonStyle';
 import Bars from '../../../Image/bars.png'
 import { useTranslation } from 'react-i18next';
 import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
 const Index = (Routprops) => {
   const services = Routprops.route.params.selectedServices;
   const [description, setDescription] = useState("");
@@ -78,14 +79,15 @@ const Index = (Routprops) => {
         else if(price==="")
           alert("Please enter the price first")
         else{
-          database().ref('user').child('loginuserdata').push({
-            serviceName:item,
-            Description:description,
-            Price:price
-            // Pic:this.state.avatarSource,
-            })
+          const uid = auth().currentUser.uid;
+          servicesArray.push(obj);
+          database()
+        .ref(`user/${uid}`)
+       .update({
+          detail:servicesArray,
+        
+       })
         }
-    servicesArray.push(obj);
         console.log(servicesArray)
     }
     return ( 

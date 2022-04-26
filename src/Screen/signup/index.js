@@ -56,13 +56,12 @@ const VarificationCode = Routprops => {
         'Success',
         'Successfully Registered',
       );
-      let userid=Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      let userid=auth().currentUser.uid;
       console.log("USer id is +Ods", userid)
-      database().ref('user').child('loginuserdata').push({
+      database().ref('user').push({
           UserID:userid,
           Name:name,
           Email:email,
-          Password:Password,
           Address:address,
           FirstName:firstName
           // Pic:this.state.avatarSource,
