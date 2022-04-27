@@ -81,12 +81,14 @@ const Index = (Routprops) => {
         else{
           const uid = auth().currentUser.uid;
           servicesArray.push(obj);
+          if(servicesArray.length===services.length){
           database()
         .ref(`user/${uid}`)
        .update({
           detail:servicesArray,
-        
        })
+       Routprops.navigation.navigate('DrawerBarber')
+      }
         }
         console.log(servicesArray)
     }
