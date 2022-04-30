@@ -83,13 +83,12 @@ const FlatListViews = ({item,index})=>{
  
   )
 }
-  const maxVal = 1900;
   const Next = () => {
     const uid = auth().currentUser.uid;
     // console.log(uid)
     database()
   .ref(`user/${uid}`)
- .set({
+ .update({
    ServicesArray:serviceAray
  })
   

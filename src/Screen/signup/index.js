@@ -58,7 +58,7 @@ const VarificationCode = Routprops => {
       );
       let userid=auth().currentUser.uid;
       console.log("USer id is +Ods", userid)
-      database().ref('user').push({
+      database().ref(`user/${userid}`).set({
           UserID:userid,
           Name:name,
           Email:email,
