@@ -8,6 +8,7 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
+  TouchableOpacity
 } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 import styles from './styles';
@@ -63,7 +64,8 @@ const VarificationCode = Routprops => {
           Name:name,
           Email:email,
           Address:address,
-          FirstName:firstName
+          FirstName:firstName,
+          Password:Password
           // Pic:this.state.avatarSource,
           })
       if (user) {
@@ -149,13 +151,11 @@ const VarificationCode = Routprops => {
                 onChangeText={name => setPassword(name)}
               />
             </View>
-            <View style={styles.InputContainer}>
-              <TextInput
-                style={{marginLeft: 20}}
-                placeholder={t('Photo de profil')}
-                placeholderTextColor="rgba(28,28,28,.4)"
-              />
+            <TouchableOpacity>
+            <View style={[styles.InputContainer,{justifyContent:"center"}]}>
+              <Text style={{marginLeft: 20,color:"rgba(28,28,28,.4)"}}>{t('Photo de profil')}</Text>
             </View>
+            </TouchableOpacity>
 
             <Text
               style={{

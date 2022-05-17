@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  ActivityIndicator
 } from 'react-native';
 import * as CommonStyle from '../../helper/CommonStyle';
 import styles from './styles';
@@ -15,6 +16,8 @@ import Bars from '../../../Image/bars.png';
 import {useTranslation} from 'react-i18next';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import '../../config/i18n/index';
+import auth from "@react-native-firebase/auth"
+import database from "@react-native-firebase/database"
 const Index = props => {
   const {t, i18n} = useTranslation();
   const [List, setList] = useState([
@@ -31,15 +34,37 @@ const Index = props => {
     {id: 5},
     {id: 6},
   ]);
+  const [Data, setData] = useState([])
+  const [Loader, setLoader] = useState(true)
+  useEffect(() => { 
+    
+    const uid = auth().currentUser.uid
+    database()
+  .ref(`user/${uid}/MyResevations`)
+  .once('value')
+  .then(snapshot => {
+    let data = snapshot.val();
+    let Items = Object.values(data)
+    Items.forEach(item=>{
+      console.log("fdsdas",item)
+      Data.push(item)
+      
+      if(data.length!==0)
+        setLoader(false)
+    })
+  });
+  // console.log("dfsdfsdfsdfsdf",Data)
+  }, [])
   const [color, setColor] = useState(false);
   const windowHeight = Dimensions.get('window').height;
   const [coutures, setCoutures] = useState(false);
   const Next = () => {
     props.navigation.navigate('History');
   };
+
   const FlatListViews = ({item, index}) => {
     return (
-      <TouchableOpacity>
+      
         <View
           style={{
             width: '100%',
@@ -60,7 +85,7 @@ const Index = props => {
                 fontSize: 12,
                 color: 'rgba(28,28,28,0.4)',
               }}>
-              {t('Emmanuel Macron')}
+              {item.CustomerName}
             </Text>
             <Text
               style={{
@@ -68,7 +93,7 @@ const Index = props => {
                 fontSize: 14,
                 color: '#2A2AC0',
               }}>
-              12/01/2019
+             {item.Date}
             </Text>
           </View>
           <View
@@ -77,21 +102,27 @@ const Index = props => {
               justifyContent: 'space-between',
               marginBottom: 10,
             }}>
-            <Text
+              <View>
+              {item.Services.map(data=>{
+                return(
+                <Text
               style={{
                 fontFamily: CommonStyle.Bold,
                 fontSize: 14,
                 color: 'rgb(28,28,28)',
               }}>
-              {t('Extension de cils')}
+              {t(data.service_name)}
             </Text>
+                )
+              })}
+            </View>
             <Text
               style={{
                 fontFamily: CommonStyle.Bold,
                 fontSize: 14,
                 color: '#2A2AC0',
               }}>
-              14:30
+              {item.Hours}:{item.Minutes}
             </Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -129,7 +160,7 @@ const Index = props => {
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+    
     );
   };
   const FlatListView = ({item, index}) => {
@@ -147,6 +178,12 @@ const Index = props => {
   const New = () => {};
   return (
     <SafeAreaView style={styles.MainContainer}>
+      {
+        Loader===true?
+        <View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center'}}>
+        <ActivityIndicator/>
+        </View>
+      :
       <ScrollView>
         <View style={styles.HeaderContainer}>
           <TouchableOpacity onPress={()=>props.navigation.navigate('DrawerBarber')}>
@@ -207,7 +244,7 @@ const Index = props => {
             </View>
 
             <View style={{marginHorizontal: 25}}>
-              <FlatList data={List} renderItem={FlatListViews} />
+              <FlatList data={Data} renderItem={FlatListViews} />
             </View>
           </>
         ) : (
@@ -245,6 +282,7 @@ const Index = props => {
           </>
         )}
       </ScrollView>
+}
     </SafeAreaView>
   );
 };

@@ -38,15 +38,20 @@ const Index = props => {
   const [servicesHandler, setservicesHandler] = useState(Services.esthetique)
   const [serviceAray, setServiceAray] = useState([])
   const serviceArrayHandler = (item) =>{
-    // console.log(item)
-    // setServices(item)
+    if(serviceAray.length===0){
+      console.log("serviceAray.length===0",serviceAray.length)
+      serviceAray.push(item)
+    }
+   else{
+        const result = serviceAray.includes(item)
+          if(result===true)
+            alert("This service is already added")
+          else 
+            serviceAray.push(item)
+    }
+   
     setServices("wa")
-      // setServiceAray((olddata)=>{
-      //     return[item,...olddata]
-      // })
-    //   console.log(serviceAray)
-    serviceAray.push(item)
-    console.log(serviceAray)
+   
   }
 const FlatListViews = ({item,index})=>{
   return(
