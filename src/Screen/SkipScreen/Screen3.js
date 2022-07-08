@@ -10,10 +10,13 @@ import {useTranslation} from 'react-i18next';
 
 import '../../config/i18n/index'
 import * as i18n from 'i18next'
+import { useNavigation } from '@react-navigation/native';
 
-const Screen3 = (props) => {
+const Screen2 = (props) => {
+  const navigation = useNavigation();
   const {t,i18n} = useTranslation(); 
-  const [Images, setImages] = useState([BGPIC,abc,def]);
+  
+  const [Images, setImages] = useState([def,abc,BGPIC]);
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView>
@@ -21,7 +24,7 @@ const Screen3 = (props) => {
           <Image source={Logo} style={styles.ImagesStyle} />
           <View style={{marginTop: 25}} />
           <View>
-            <Text style={styles.Content}>{t("Réservez")}</Text>
+            <Text style={styles.Content}>{t("Filtrez")}</Text>
           </View>
           <View style={{marginTop:150}}>
           <SliderBox 
@@ -32,10 +35,8 @@ const Screen3 = (props) => {
                 />
           </View>
           <View style={{flexDirection: 'row'}}>
-            <View style={styles.BottomLeft}>
-            </View>
-            <View style={styles.BottomRight}>
-              <TouchableOpacity onPress={()=>props.navigation.navigate('LoginSignUp')}>
+            <View style={styles.BottomRights}>
+              <TouchableOpacity  onPress={()=>navigation.navigate('LoginSignUp')}>
                 <Text style={styles.RightText}>{t("Suivant")}</Text>
               </TouchableOpacity>
             </View>
@@ -45,4 +46,4 @@ const Screen3 = (props) => {
     </SafeAreaView>
   );
 };
-export default Screen3;
+export default Screen2;

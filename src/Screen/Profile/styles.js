@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         width: '85%',
         alignSelf: 'center',
+        color: CommonStyle.dark
       }
 })
 export default styles;

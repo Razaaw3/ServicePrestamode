@@ -1,10 +1,14 @@
 {
     "translation": {
-      "précédent":"précédent",
+      "English":"Français v",
       "Languages":"Langues",
+      "Contacter":"Contacter",
+      "To Book":"Réserver",
+      "Previous":"Précédent",
+      "Location":"Ville...",
       "This line is translated":"veuillez sélectionner votre langue",
       "To validate":"Valider",
-      "Next":"Suivante",
+      "Next":"Suivant",
       "please select your language":"veuillez sélectionner votre langue",
       "Welcome":"Bienvenue",
       "Login":"Connexion",
@@ -21,12 +25,13 @@
       "A code will be sent to you":"Un code vous sera envoyé",
       "Search":"Cherchez",
       "Filter":"Filtrez",
-      "Book":"réservez",
+      "Book":"Réservez",
       "Benefits":"Prestations",
       "Modify profession":"Modifier métier",
       "Eyelash extension":"Extension de cils",
       "Description":"La description",
       "Add a picture":"Ajouter une image",
+      "Add to calendar":"Ajouter à l'agenda",
       "Eyelash lift":"Réhaussement de cils",
       "Hairdresser":"Coiffeur",
       "Notice":"Avis",
@@ -77,6 +82,7 @@
       "Send again":"Envoyer à nouveau",
       "Change number":"Modifier le numéro",
       "To research":"Rechercher",
-      "Calender":"Créneau"
+      "Calender":"Créneau",
+      "2 days before your appointment":"2 jours avant votre rendez-vous"
     }
   }

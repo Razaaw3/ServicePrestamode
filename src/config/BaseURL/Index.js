@@ -1,0 +1,1 @@
+export const ProfileImage = "https://firebasestorage.googleapis.com/v0/b/pretanode.appspot.com/o/avatar.png?alt=media&token=791d2958-d6ce-4b1b-b0cc-66029cfd3c1e";

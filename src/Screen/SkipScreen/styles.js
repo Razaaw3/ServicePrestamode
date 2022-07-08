@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
       BottomRight:{
         marginLeft:'auto',
         marginRight:20,
-        marginTop:85,
+        marginTop:60,
       },
       BottomRights:{
         flexDirection:'row',
         marginRight:'auto',
         marginLeft:'auto',
-        marginTop:85,
-        justifyContent:'space-between',
+        marginTop:60,
+        justifyContent:'flex-end',
         width:'80%'
       },
 })

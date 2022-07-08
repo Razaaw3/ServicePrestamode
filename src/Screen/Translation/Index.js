@@ -50,7 +50,7 @@ const Index = (Routprops) => {
           .catch(err => console.log(err));
       }
       const ChangeLanguageFun = () => {
-        Routprops.navigation.navigate( auth().currentUser ? "DrawerBarber" : "Screen1");
+        Routprops.navigation.navigate( auth().currentUser ? "MyTabs" : "Screen1");
     }
     return ( 
         <SafeAreaView style={styles.MainContainer}>

@@ -16,20 +16,41 @@ import {useTranslation} from 'react-i18next';
 import Back from 'react-native-vector-icons/Ionicons';
 import avatar from '../../../Image/avatar.png';
 import {Avatar} from 'react-native-paper';
+import auth from '@react-native-firebase/auth'
+import database from '@react-native-firebase/database';
 const Index = props => {
-  const [List, setList] = useState([
-    {id: 1},
-    {id: 1},
-    {id: 1},
-    {id: 1},
-    {id: 1},
-    {id: 1},
-    {id: 1},
-  ]);
+  const [List, setList] = useState([]);
+  const [id, setID] = useState('')
+  const [Name, setName] = useState('')
   const {t, i18n} = useTranslation();
+  useEffect(() => {
+    // const userid=auth().currentUser.uid;
+  
+    database()
+      .ref(`prestamodeUser`)
+      .once('value')
+      .then(snapshot => {
+        let data = snapshot.val();
+        let Items = Object.values(data);
+        Items.forEach(ls=>{
+        
+          setList((oldData)=>[...oldData,ls])
+          setID(ls.UserID)
+          setName(ls.Name)
+    
+          console.log("list is ",List)
+        })
+      });
+  }, [])
+  const Next = (id,name) =>{
+    props.navigation.navigate('Chat',{
+      _id:id,
+      name:name
+    })
+  }
   const FlatListView = ({item, index}) => {
     return (
-      <TouchableOpacity onPress={() => props.navigation.navigate('Chat')}>
+      <TouchableOpacity onPress={()=>Next(item.UserID,item.Name)}>
         <View style={styles.chatContainer}>
           <View style={{width: '20%'}}>
             <Avatar.Image
@@ -46,7 +67,7 @@ const Index = props => {
                   fontSize: 15,
                   color: CommonStyle.dark,
                 }}>
-                {t('Julian Dasilva')}
+                {t(item.Name)}
               </Text>
               <Text style={{fontFamily: CommonStyle.Regular, fontSize: 12}}>
                 {t('1h ago')}

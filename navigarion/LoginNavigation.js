@@ -23,8 +23,30 @@ import Book from '../src/Screen/Book/Index'
 import Schedule from '../src/Screen/Schedule/Index'
 import History from '../src/Screen/History/Index'
 import PaymentPlan from '../src/Screen/PaymentPlan/Index'
-import DrawerBarber from '../src/Screen/DrawerBarber/Index'
+import Home from '../src/Screen/DrawerBarber/Index'
 import Login from '../src/Screen/login/index'
+import Revenues from '../src/Screen/Revenues/Index'
+
+//ICONS
+import Iconics from 'react-native-vector-icons/Ionicons'
+import Octicons from 'react-native-vector-icons/Octicons'
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator screenOptions={{headerShown:false,tabBarActiveTintColor:'green',tabBarStyle:{position:'absolute',backgroundColor:"#FFF",borderTopColor:"white",height:60,paddingBottom:5}}} initialRouteName='Home'>
+    <Tab.Screen name="Home" component={Home}  options={{tabBarIcon:()=><SimpleLineIcons name="home" size={28} color="#F78489"/>}}/>
+    <Tab.Screen name="Revenues" component={Revenues} options={{tabBarIcon:()=> <Octicons name="graph" color="#F78489" size={28} style={{alignSelf: 'center'}} />}}/>
+    <Tab.Screen name="Inbox" component={Inbox} options={{tabBarIcon:()=><Iconics name="ios-chatbubbles-outline" size={28} color="#F78489"/>}}/>
+    <Tab.Screen name="Schedule" component={Schedule} options={{tabBarIcon:()=><FontAwesome name="calendar" color="#F78489" size={28} style={{alignSelf: 'center'}} />}}/>
+  </Tab.Navigator>
+  );
+}
 
 const LoginNavigation = () => {
     const Auth = () => {
@@ -42,6 +64,8 @@ const LoginNavigation = () => {
             <Stack.Navigator initialRouteName='SplashScreen' screenOptions={{
                 headerShown: false
               }}>
+                <Stack.Screen name="Revenues" component={Revenues} />
+                <Stack.Screen name="MyTabs" component={MyTabs} />
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Screen1" component={Screen1} />
@@ -63,7 +87,7 @@ const LoginNavigation = () => {
                 <Stack.Screen name="Book" component={Book} />
                 <Stack.Screen name="Schedule" component={Schedule} />
                 <Stack.Screen name="History" component={History} />
-                <Stack.Screen name="DrawerBarber" component={DrawerBarber} />
+                {/* <Stack.Screen name="Home" component={Home} /> */}
                 <Stack.Screen name="PaymentPlan" component={PaymentPlan} />
 
             </Stack.Navigator>

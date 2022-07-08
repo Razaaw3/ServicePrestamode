@@ -10,10 +10,13 @@ import {useTranslation} from 'react-i18next';
 
 import '../../config/i18n/index'
 import * as i18n from 'i18next'
+import { useNavigation } from '@react-navigation/native';
 
 const Screen2 = (props) => {
+  const navigation = useNavigation();
   const {t,i18n} = useTranslation(); 
-  const [Images, setImages] = useState([BGPIC,abc,def]);
+  
+  const [Images, setImages] = useState([abc,BGPIC,def]);
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView>
@@ -33,10 +36,7 @@ const Screen2 = (props) => {
           </View>
           <View style={{flexDirection: 'row'}}>
             <View style={styles.BottomRights}>
-            <TouchableOpacity onPress={()=>props.navigation.navigate('Screen1')}>
-                <Text style={styles.RightText}>{t("précédent")}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>props.navigation.navigate('Screen3')}>
+              <TouchableOpacity  onPress={()=>navigation.navigate('LoginSignUp')}>
                 <Text style={styles.RightText}>{t("Suivant")}</Text>
               </TouchableOpacity>
             </View>

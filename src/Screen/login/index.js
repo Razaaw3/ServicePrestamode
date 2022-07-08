@@ -79,7 +79,7 @@ const Index = Routprops => {
         'Successfully Login',
       );
       setTimeout(() => {
-        Routprops.navigation.navigate('DrawerBarber');
+        Routprops.navigation.navigate('MyTabs');
       }, 2000);
         }
       })
@@ -133,7 +133,7 @@ const Index = Routprops => {
             </View> */}
              <View style={styles.inputFields}>
               <TextInput
-                style={{marginLeft: 20}}
+                style={{marginLeft: 20, color:CommonStyle.dark}}
                 placeholder="E-mail"
                 placeholderTextColor="rgba(28,28,28,.4)"
                 onChangeText={name => setEmail(name)}
@@ -150,6 +150,7 @@ const Index = Routprops => {
                   fontSize: 16,
                   width: '85%',
                   alignSelf: 'center',
+                  color:CommonStyle.dark
                 }}
               />
             </View>
