@@ -93,9 +93,6 @@ const Index = props => {
             size={26}
             color="#707070"
           />
-          <TouchableOpacity>
-            <Image source={avatar} />
-          </TouchableOpacity>
         </View>
         <View style={styles.message}>
           <Text

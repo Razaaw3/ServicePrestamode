@@ -4,10 +4,10 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     MainContainer : {
-        backgroundColor:CommonStyle.AppThemeDark,
+        backgroundColor:CommonStyle.pureWhite,
         width:windowWidth*1.0,
         height:windowHeight*1.0,
-        paddingBottom:15
+        paddingBottom:84
     },
     HeaderContainer:{
         backgroundColor:CommonStyle.white,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
       inputFields:{
           width:'90%',
           height: 43,
-          backgroundColor:CommonStyle.AppThemeLight,
+          backgroundColor:CommonStyle.pureWhite,
           alignSelf:'center',
           borderRadius:7,
           shadowColor: "#000",
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
       inputField:{
         width:'90%',
         height: 160,
-        backgroundColor:CommonStyle.AppThemeLight,
+        backgroundColor:CommonStyle.pureWhite,
         alignSelf:'center',
         borderRadius:7,
         shadowColor: "#000",
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     },
       inputContainer:{
         //   marginVertical:5
+        marginTop:35
       },
       ButtonContainer: {
         width: windowWidth * 1.0,

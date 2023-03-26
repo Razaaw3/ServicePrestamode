@@ -31,7 +31,7 @@ const Index = Routprops => {
           style={{
             width: 138,
             height: 200,
-            backgroundColor: '#00437A',
+            backgroundColor: CommonStyle.BlueButton,
             margin: 9,
           }}>
           <Card.Content>

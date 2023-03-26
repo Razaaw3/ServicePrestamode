@@ -61,50 +61,50 @@ const Index = Routprops => {
 
   const CHECK = () => {
     
-    if (ComEmail === true) {
-      setError('Email is Empty');
-    } else if (ComPassword === true) {
-      setError('Password is Empty');
-    } else {
+    // if (ComEmail === true) {
+    //   setError('Email is Empty');
+    // } else if (ComPassword === true) {
+    //   setError('Password is Empty');
+    // } else {
       
-      auth()
-      .signInWithEmailAndPassword(email, Password)
-      .then((user) => {
-        console.log(user);
-        if (user){
-          setError('')
-         dropDownAlertRef.current?.alertWithType(
-        'success',
-        'Success',
-        'Successfully Login',
-      );
-      setTimeout(() => {
+    //   auth()
+    //   .signInWithEmailAndPassword(email, Password)
+    //   .then((user) => {
+    //     console.log(user);
+    //     if (user){
+    //       setError('')
+    //      dropDownAlertRef.current?.alertWithType(
+    //     'success',
+    //     'Success',
+    //     'Successfully Login',
+    //   );
+    //   setTimeout(() => {
         Routprops.navigation.navigate('MyTabs');
-      }, 2000);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.code === "auth/invalid-email")
-        dropDownAlertRef.current?.alertWithType(
-          'error',
-          'Error',
-          error.message
-        );
+    //   }, 2000);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     if (error.code === "auth/invalid-email")
+    //     dropDownAlertRef.current?.alertWithType(
+    //       'error',
+    //       'Error',
+    //       error.message
+    //     );
           
-        else if (error.code === "auth/user-not-found")
-        dropDownAlertRef.current?.alertWithType(
-          'error',
-          'Error',
-          "No User Found"
-        );
-        else {
-          setError(
-            "Please check your email id or password"
-          );
-        }
-      });
-    }
+    //     else if (error.code === "auth/user-not-found")
+    //     dropDownAlertRef.current?.alertWithType(
+    //       'error',
+    //       'Error',
+    //       "No User Found"
+    //     );
+    //     else {
+    //       setError(
+    //         "Please check your email id or password"
+    //       );
+    //     }
+    //   });
+    // }
   };
   
   return (
@@ -117,20 +117,6 @@ const Index = Routprops => {
             <Image source={BGPIC} style={styles.ImagesStyle} />
           </View>
           <View style={styles.inputContainer}>
-            {/* <View style={styles.InputStyleMains}>
-              <PhoneInput
-                defaultValue={Value}
-                defaultCode="DM"
-                layout="first"
-                onChangeText={text => {
-                  setPhoneNumber(text);
-                }}
-                onChangeFormattedText={text => {
-                  setFormattedValue(text);
-                }}
-                style={styles.InputStyles}
-              />
-            </View> */}
              <View style={styles.inputFields}>
               <TextInput
                 style={{marginLeft: 20, color:CommonStyle.dark}}
@@ -139,7 +125,6 @@ const Index = Routprops => {
                 onChangeText={name => setEmail(name)}
               />
             </View>
-            {/* <Text style={{alignSelf:'center',color:'red',fontFamily:CommonStyle.Regular,fontSize:12}}>{error}</Text> */}
             <View style={styles.inputFields}>
               <TextInput
                 onChangeText={Email => setPassword(Email)}
@@ -166,9 +151,8 @@ const Index = Routprops => {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-      <View style={{marginVertical: 15}}>
+      <View style={{marginTop: "auto",marginBottom:25}}>
         <Button
-          ButtonStyle="red"
           ButtonText={t('Se connecter')}
           propsFun={CHECK}
         />

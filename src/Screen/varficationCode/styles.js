@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     MainContainer : {
-        backgroundColor:CommonStyle.AppThemeDark,
+        backgroundColor:CommonStyle.AppThemeLight,
         width:windowWidth*1.0,
         height:windowHeight*1.0,
         paddingBottom:15
@@ -32,18 +32,29 @@ const styles = StyleSheet.create({
     InputStyleMain:{
         flexDirection:'row',
         marginTop:25,
-        width:windowHeight*.5,
-        borderRadius:10,
+        width:windowHeight*.48,
+        borderRadius:4,
         alignSelf:'center',
         marginBottom:25,
-        backgroundColor:CommonStyle.AppThemeLight
+        backgroundColor:CommonStyle.AppThemeLight,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        
+        elevation: 4,
     },
     InputStyle:{
         marginLeft:windowHeight*.05,
         width:windowHeight*.33,
         alignSelf:'center',
         marginBottom:10,
-        backgroundColor:CommonStyle.AppThemeLight
+        backgroundColor:CommonStyle.AppThemeLight,
+        borderColor:CommonStyle.AppThemeLight,
+        borderWidth:1
     },
     root:{
         flex: 1,
@@ -63,8 +74,9 @@ const styles = StyleSheet.create({
         fontSize: 24,
         borderWidth: 1,
         borderBottomColor:'lightgray',
-        borderColor:'white',
+        borderColor:CommonStyle.AppThemeLight,
         textAlign: 'center',
+        color:CommonStyle.dark
     },
     focusCell: {
         borderColor: 'white',

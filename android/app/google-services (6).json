@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "212141452853-74aij0bdudh16ue2oqc7js0t93micdgi.apps.googleusercontent.com",
+          "client_id": "212141452853-h565e7brcfrpcijr5a7tvci1n2nnhgpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prestamode",
+            "certificate_hash": "8ecdb84da0531412bfb85ea2ef183af395d9aee8"
+          }
+        },
+        {
+          "client_id": "212141452853-uiqri2nlnh9bnu85af6saelmfq06jdl7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.prestamode",

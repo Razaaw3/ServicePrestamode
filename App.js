@@ -10,13 +10,12 @@ const App = () => {
     const firebaseConfig = {
       apiKey: "AIzaSyCDh__FZDsAe83Lb-K8kw6UJ1poFD1KQnk",
       authDomain: "pretanode.firebaseapp.com",
+      databaseURL: "https://pretanode-default-rtdb.firebaseio.com",
       projectId: "pretanode",
       storageBucket: "pretanode.appspot.com",
       messagingSenderId: "212141452853",
       appId: "1:212141452853:web:96b48ccb830613ea754b7c",
-      measurementId: "G-EGB8LSGRYT",
-      databaseURL:"https://pretanode-default-rtdb.firebaseio.com/"
-
+      measurementId: "G-EGB8LSGRYT"
     };
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);

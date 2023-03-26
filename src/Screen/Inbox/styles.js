@@ -2,7 +2,7 @@ import {Dimensions,StyleSheet} from 'react-native';
 import * as CommonStyle from '../../helper/CommonStyle';
 const styles = StyleSheet.create({
     MainContainer : {
-        backgroundColor:CommonStyle.AppThemeDark,
+        backgroundColor:CommonStyle.pureWhite,
         height:'100%',
     },
     HeaderContainer:{
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         marginBottom:25
     },
     chatContainer:{
-        backgroundColor:CommonStyle.white,
+        backgroundColor:CommonStyle.pureWhite,
         flexDirection:'row',
         height:80
     },

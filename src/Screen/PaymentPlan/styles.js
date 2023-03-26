@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     MainContainer : {
-        backgroundColor:CommonStyle.AppThemeDark,
+        backgroundColor:CommonStyle.pureWhite,
         width:windowWidth*1.0,
         height:windowHeight*1.0,
         // paddingBottom:15

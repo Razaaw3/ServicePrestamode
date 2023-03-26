@@ -67,10 +67,10 @@ const Index = Routprops => {
         <View style={{marginVertical: 15}}>
           <Button ButtonText={t('Sélectionner un fichier')} propsFun={CHECK} />
         </View>
-        <View style={{width: '80%', alignSelf: 'center'}}>
-          <Text style={{textAlign: 'center'}}>
+        <View style={{width: '75%', alignSelf: 'center'}}>
+          <Text style={{textAlign: 'center',color:CommonStyle.Date}}>
             {t(
-              'Document acceptés : carte d’identité, passeport, titre de séjour,permis de conduire',
+              'Document acceptés' )} : {t('carte d’identité, passeport, titre de séjour,permis de conduire',
             )}
           </Text>
         </View>
@@ -79,7 +79,7 @@ const Index = Routprops => {
       </ScrollView>
       <View style={{width: '80%', alignSelf: 'center', marginBottom: 35}}>
         <TouchableOpacity>
-          <Text style={{textAlign: 'center'}}>{t('Envoyer plus tard')}</Text>
+          <Text style={{textAlign: 'center',color:CommonStyle.Date}}>{t('Envoyer plus tard')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

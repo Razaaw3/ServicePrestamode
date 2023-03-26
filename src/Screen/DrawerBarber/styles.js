@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     },
     ImageContainer:{
       backgroundColor:CommonStyle.RedButton,
-      width:140,
-      height:140,
+      width:150,
+      height:150,
       borderRadius:350,
       alignItems: "center",
       justifyContent: "center",
@@ -27,17 +27,17 @@ const styles = StyleSheet.create({
   },
   box:{
     backgroundColor:CommonStyle.BlueButton,
-    height:127,
-    width:127,
+    height:100,
+    width:100,
     borderRadius:8,
     justifyContent: 'center',
-    margin:5,
+    margin:8,
 
   },
   text:{
     color:CommonStyle.AppThemeDark,
     alignSelf:'center',
-    fontSize:20,
+    fontSize:12,
     marginTop:10
   },
   Image:{

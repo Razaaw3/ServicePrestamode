@@ -5,13 +5,14 @@ import {
     SafeAreaView,
     ActivityIndicator
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 import Logo from '../../../Image/logo.png';
-import '../../config/i18n/index'
-import {useTranslation} from 'react-i18next';
+import '../../config/i18n/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth'
 const SplashScreen = (props) => {
-    const {t,i18n} = useTranslation(); 
+    const {t, i18n} = useTranslation();
     useEffect(() => {
         async function fetchValue(){
                 try {
@@ -29,7 +30,7 @@ const SplashScreen = (props) => {
                 console.log("Error is ",error)
             }
             setTimeout(function(){
-                props.navigation.navigate('Translation');
+                props.navigation.navigate(auth().currentUser ? "MyTabs" :'LoginSignUp');
             }, 2000);
         }
         fetchValue();

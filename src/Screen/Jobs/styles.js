@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: CommonStyle.AppThemeDark,
+    backgroundColor: CommonStyle.white,
     height: '100%',
   },
   MainDrawer: {
@@ -12,9 +12,10 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyle.AppThemeDark,
   },
   HeaderContainer: {
-    backgroundColor: CommonStyle.white,
+    backgroundColor: CommonStyle.pureWhite,
     height: 126,
     width: '100%',
+    marginBottom:10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#DCE5F4',
+    backgroundColor: CommonStyle.BlueButton,
     height: 34,
     width: '87%',
     marginLeft: 'auto',
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   tabContainer2: {
     flexDirection: 'row',
     height: 26,
-    backgroundColor: 'white',
+    backgroundColor: CommonStyle.RedButton,
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: {
@@ -74,6 +75,15 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     marginVertical: 10,
     paddingHorizontal: 15,
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 1,
+},
+shadowOpacity: 0.20,
+shadowRadius: 1.90,
+
+elevation: 2,
   },
   inputFields:{
     backgroundColor:CommonStyle.white,
@@ -86,14 +96,13 @@ const styles = StyleSheet.create({
     marginVertical:5,
     shadowColor: "#000",
 shadowOffset: {
-width: 0,
-height: 3,
+	width: 0,
+	height: 1,
 },
-shadowOpacity: 0.29,
-shadowRadius: 4.65,
+shadowOpacity: 0.22,
+shadowRadius: 2.22,
 
-elevation: 7,
-
+elevation: 3,
 },
 inputField:{
 

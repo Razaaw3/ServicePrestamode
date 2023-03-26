@@ -62,7 +62,7 @@ const FlatListViews = ({item,index})=>{
           paddingHorizontal:15,
           fontSize: 16,
           fontFamily: CommonStyle.Bold,
-          color: CommonStyle.dark,
+          color: "red",
           marginVertical:10
         }}>
           {item.heading}
@@ -89,17 +89,17 @@ const FlatListViews = ({item,index})=>{
   )
 }
   const Next = () => {
-    const uid = auth().currentUser.uid;
-    // console.log(uid)
-    database()
-  .ref(`user/${uid}`)
- .update({
-   ServicesArray:serviceAray
- })
-  
-    props.navigation.navigate('Benifits',{
-      selectedServices:serviceAray
-    });
+// //     const uid = auth().currentUser.uid;
+// //     // console.log(uid)
+// //     database()
+// //   .ref(`user/${uid}`)
+// //  .update({
+// //    ServicesArray:serviceAray
+// //  })
+props.navigation.navigate('Benifits')
+//     props.navigation.navigate('Benifits',{
+//       selectedServices:serviceAray
+//     });
   }
   const FlatListView = ({item, index}) => {
     return (
@@ -149,10 +149,11 @@ const FlatListViews = ({item,index})=>{
                 <Image
                   source={require('../../../Image/sewing.png')}
                   resizeMode="contain"
-                  style={{width: '100%', height: '100%', color: '#707070'}}
+                  style={{width: '100%', height: '100%',}}
+                  tintColor={CommonStyle.pureWhite}
                 />
               </View>
-              <Text style={{color: '#707070'}}>{t('Coutures')}</Text>
+              <Text style={{color: CommonStyle.pureWhite}}>{t('Coutures')}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -172,10 +173,11 @@ const FlatListViews = ({item,index})=>{
                 <Image
                   source={require('../../../Image/barber.png')}
                   resizeMode="contain"
-                  style={{width: '100%', height: '100%', color: '#707070'}}
+                  style={{width: '100%', height: '100%',}}
+                  tintColor={CommonStyle.pureWhite}
                 />
               </View>
-              <Text style={{color: '#707070'}}>{t('Coiffure')}</Text>
+              <Text style={{color: CommonStyle.pureWhite}}>{t('Coiffure')}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -195,10 +197,11 @@ const FlatListViews = ({item,index})=>{
                 <Image
                   source={require('../../../Image/nail.png')}
                   resizeMode="contain"
-                  style={{width: '100%', height: '100%', color: '#707070'}}
+                  style={{width: '100%', height: '100%', }}
+                  tintColor={CommonStyle.pureWhite}
                 />
               </View>
-              <Text style={{color: '#707070'}}>{t('Esthétique')}</Text>
+              <Text style={{color: CommonStyle.pureWhite}}>{t('Esthétique')}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -236,10 +239,11 @@ const FlatListViews = ({item,index})=>{
              <Text
                   style={{
                     backgroundColor: CommonStyle.white,
-                    color: CommonStyle.dark,
+                    color:  "rgba(28,28,28,0.2)",
                     paddingHorizontal:15
+                  
                   }}>
-                  {t('Pick up services...')}
+                  {t('Expérience')}
                 </Text>
             </View>
             <View
@@ -248,7 +252,7 @@ const FlatListViews = ({item,index})=>{
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Arrow name="keyboard-arrow-down" size={24} color="#EF233C" />
+              <Arrow name="keyboard-arrow-down" size={24} color={CommonStyle.BlueButton} />
             </View>
           </View>
           </TouchableOpacity>
@@ -259,7 +263,7 @@ const FlatListViews = ({item,index})=>{
             <View style={{height:'10%',alignItems:'center',flexDirection:'row',paddingHorizontal:10}}>      
             <TouchableOpacity onPress={()=>setWidth(!width)} style={{flexDirection:'row',flexDirection:'row',justifyContent:'space-around'}}>       
           <View
-            style={{ justifyContent: 'center'}}>
+            style={{ justifyContent: 'center',width:'100%',height:40}}>
            <Text
                 style={{
                   backgroundColor: CommonStyle.white,
@@ -270,7 +274,7 @@ const FlatListViews = ({item,index})=>{
               </Text>
           </View>
           <View>
-            <Arrow name="keyboard-arrow-down" size={24} color="#EF233C" />
+            <Arrow name="keyboard-arrow-up" size={24} color="#EF233C" style={{marginTop:7}} />
           </View>
           </TouchableOpacity>
        
@@ -298,7 +302,7 @@ const FlatListViews = ({item,index})=>{
               }}>
               {t('Expertise')}
             </Text>
-            <Text
+            {/* <Text
               style={{
                 fontFamily: CommonStyle.Regular,
                 fontSize: 14,
@@ -307,7 +311,7 @@ const FlatListViews = ({item,index})=>{
                 marginHorizontal: 8,
               }}>
               {t('Beauté visage')}
-            </Text>
+            </Text> */}
           </View>
         </Provider>
         <View style={styles.listContainer}>
@@ -318,7 +322,7 @@ const FlatListViews = ({item,index})=>{
           />
         </View>
       </ScrollView>
-      <View>
+      <View style={{marginBottom:60}}>
         <ButtonS ButtonStyle="red" ButtonText="Valider " propsFun={Next} />
       </View>
     </SafeAreaView>

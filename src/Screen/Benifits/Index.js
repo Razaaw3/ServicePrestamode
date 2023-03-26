@@ -17,10 +17,10 @@ import { useTranslation } from 'react-i18next';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 const Index = (Routprops) => {
-  const services = Routprops.route.params.selectedServices;
+  // const services = Routprops.route.params.selectedServices;
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [servicesArray, setservicesArray] = useState([])
+  const [servicesArray, setservicesArray] = useState([1,2])
   const FlatListView = ({item, index}) => {
     return (
       <>
@@ -58,9 +58,24 @@ const Index = (Routprops) => {
           backgroundColor:CommonStyle.RedButton,
           justifyContent: 'center',
         }}
-        onPress={CHECK.bind(this,item)}
+        // onPress={CHECK.bind(this,item)}
         >
         <Text style={styles.Buttontext}>{t("Valider")}</Text>
+      </TouchableOpacity>
+    </View>
+    <View style={styles.ButtonContainer}>
+      <TouchableOpacity
+        style={{
+          width: windowWidth * 0.9,
+          alignSelf: 'center',
+          height: 43,
+          borderRadius: 8,
+          backgroundColor:CommonStyle.RedButton,
+          justifyContent: 'center',
+        }}
+        // onPress={CHECK.bind(this,item)}
+        >
+        <Text style={styles.Buttontext}>{t("Supprimer")}</Text>
       </TouchableOpacity>
     </View>
     </View>
@@ -70,48 +85,45 @@ const Index = (Routprops) => {
   
     const windowWidth = Dimensions.get('window').width;
   const {t,i18n}=useTranslation();
-    const CHECK = (item) => {
-        // Routprops.navigation.navigate('DrawerBarber')
-        let obj = {"service_name":item,"Description":description,"Price":price};
-        if(description==""){
-          alert("Please enter description");
-        }
-        else if(price==="")
-          alert("Please enter the price first")
-        else{
-          const uid = auth().currentUser.uid;
-          servicesArray.push(obj);
-          if(servicesArray.length===services.length){
-          database()
-        .ref(`user/${uid}`)
-       .update({
-          detail:servicesArray,
-       })
-       Routprops.navigation.navigate('DrawerBarber')
-      }
-        }
-        console.log(servicesArray)
-    }
+    // const CHECK = (item) => {
+    //     // Routprops.navigation.navigate('DrawerBarber')
+    //     let obj = {"service_name":item,"Description":description,"Price":price};
+    //     if(description==""){
+    //       alert("Please enter description");
+    //     }
+    //     else if(price==="")
+    //       alert("Please enter the price first")
+    //     else{
+    //       const uid = auth().currentUser.uid;
+    //       servicesArray.push(obj);
+    //       if(servicesArray.length===services.length){
+    //       database()
+    //     .ref(`user/${uid}`)
+    //    .update({
+    //       detail:servicesArray,
+    //    })
+    //    Routprops.navigation.navigate('DrawerBarber')
+    //   }
+    //     }
+    //     console.log(servicesArray)
+    // }
     return ( 
         <SafeAreaView style={styles.MainContainer}>
             <ScrollView>
             <View style={styles.HeaderContainer}>
-            <TouchableOpacity onPress={()=>Routprops.navigation.push('DrawerBarber')}>
+            <TouchableOpacity onPress={()=>Routprops.navigation.goBack()}>
             <View style={{height:20,width:20, marginBottom:20,marginTop:6}}>
                 <Image source={Bars} resizeMode='contain' style={{width:'100%',height:'100%'} }/>
             </View>
             </TouchableOpacity>
             <View>
-                <Text style={{color:CommonStyle.BlueColor, fontSize:24, fontFamily:CommonStyle.Bold}}>{t("Prestations")}</Text>
+                <Text style={{color:CommonStyle.BlueButton, fontSize:24, fontFamily:CommonStyle.Bold}}>{t("Modifier prestation")}</Text>
             </View>
-        </View>
-        <View style={{marginVertical:22}}>
-            <Text style={{color:CommonStyle.Date, fontSize:14, fontFamily:CommonStyle.Regular,textAlign:'center'}}>{t("Modifier métier")}</Text>
         </View>
         <View style={styles.inputContainer}>
         <FlatList
             // key={'_'}
-            data={services}
+            data={servicesArray}
             renderItem={FlatListView}
           />
         </View>

@@ -4,9 +4,10 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     MainContainer : {
-        backgroundColor:CommonStyle.AppThemeDark,
+        backgroundColor:CommonStyle.AppThemeLight,
         width:windowWidth*1.0,
         height:windowHeight*1.0,
+        paddingBottom:15
     },
     ImagesStyle: {
         marginTop: 30,
@@ -31,6 +32,49 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         
         elevation: 6,
-      }
+      },
+      modal:{
+        height:130,
+        width:"100%",
+        backgroundColor:"white",
+        marginTop:"auto",
+        justifyContent:'space-evenly',
+        alignItems:'center',
+        flexDirection:'row'
+      },
+      textStyle: {
+        padding: 10,
+        color: 'black',
+        textAlign: 'center',
+      },
+      phoneContainer: {
+        // width: '75%',
+        width: windowWidth * 0.75,
+        height: "100%",
+        backgroundColor: '#fff',
+        elevation: 0,
+        // backgroundColor:'red',
+        borderRadius:12
+      },
+      textInput: {
+        paddingVertical: 0,
+        // backgroundColor: 'gold',
+        width: windowWidth * 0.6,
+        backgroundColor: '#fff',
+        // fontFamily: CommonStyle.regular,
+        color: '#000',
+      },
+      codeTextStyle: {
+        // fontFamily: CommonStyle.regular,
+        fontSize: 15,
+        // backgroundColor: 'gold',
+        // width: windowWidth * 0.1,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+      },
+      countryPickerButtonStyle: {
+        height:"100%",  
+        width: 70,
+      },
 })
 export default styles;
